@@ -37,12 +37,12 @@ describe("About Applying What We Have Learnt", function() {
       var productsICanEat = [];
       var isMushrooms = function(ingredient) {
         return ingredient === "mushrooms";
-      }
+      };
 
       /* solve using filter() & all() / any() */
       productsICanEat = _(products).filter(function(product) {
-                            return !product.containsNuts && !_(product["ingredients"]).any(isMushrooms);
-                        })
+                            return !product.containsNuts && !_(product.ingredients).any(isMushrooms);
+                        });
       
       expect(productsICanEat.length).toBe(1);
   });
@@ -93,7 +93,7 @@ describe("About Applying What We Have Learnt", function() {
 
     /* chain() together map(), flatten() and reduce() */
     _(products).chain()
-      .map(function(product) { return product.ingredients })
+      .map(function(product) { return product.ingredients; })
       .flatten()
       .reduce(function(count, ingredient) {
         count[ingredient] = (count[ingredient] || 0) + 1;
